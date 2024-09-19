@@ -5,22 +5,44 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPF"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800" MinHeight="450" MinWidth="600">
-    <Grid>
-        
-        <Grid ShowGridLines="True">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="*"></RowDefinition>
-                <RowDefinition Height="2*"></RowDefinition>
-                <RowDefinition Height="*"></RowDefinition>
-            </Grid.RowDefinitions>
-            
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition></ColumnDefinition>
-                <ColumnDefinition></ColumnDefinition>
-                <ColumnDefinition></ColumnDefinition>
-            </Grid.ColumnDefinitions>
-        </Grid>
-        
+        Title="MainWindow" Height="500" Width="800" MinHeight="450" MinWidth="600" Background="LightYellow">
+
+    <Grid ShowGridLines="True">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="2*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <StackPanel Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Vertical">
+            <CheckBox FontSize="16" Margin="10" Content=" Я согласен с пользовательским соглашением"/>
+            <CheckBox FontSize="16" Margin="10" Content="Я согласен на обработку данных"/>
+        </StackPanel>
+
+        <Button MinHeight="50" MinWidth="50" FontSize="18" Margin="20" Grid.Row="3" Grid.Column="1">Принять</Button>
+        <Button MinHeight="50" MinWidth="50" FontSize="18" Margin="20" Grid.Row="3" Grid.Column="2">Отмена</Button>
+
+        <Label Content="Установка" Grid.Row="0" Grid.Column="0" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+        <RichTextBox Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Margin="20" FontSize="20">
+            <FlowDocument>
+                <Paragraph>
+                    <Run>Путь установки: C:\Users\Ilyas\AppData\Local\hgv</Run>
+                </Paragraph>
+                <Paragraph>
+                    <Run>Требуемого места: 148Т </Run>
+                </Paragraph>
+            </FlowDocument>
+        </RichTextBox>
+
+        <Image Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" Source="images/hgvstrgtavc.png" Stretch="Fill" Margin="0,10"/>
+
     </Grid>
 </Window>

@@ -8,4 +8,14 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Remove="images\hgvstrgtavc.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="images\hgvstrgtavc.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+
 </Project>
