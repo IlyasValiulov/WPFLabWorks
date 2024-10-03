@@ -7,6 +7,15 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="500" Width="800" MinHeight="450" MinWidth="600" Background="LightYellow">
 
+    <Window.Resources>
+        <Style x:Key="buttonDesicion" TargetType="Button">
+            <Setter Property="Background" Value="Wheat"/>
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="BorderBrush" Value="Black"/>
+            <Setter Property="FontSize" Value="18"/>
+        </Style>
+    </Window.Resources>
+
     <Grid ShowGridLines="True">
         <Grid.RowDefinitions>
             <RowDefinition Height="*"></RowDefinition>
@@ -26,8 +35,8 @@
             <CheckBox FontSize="16" Margin="10" Content="Я согласен на обработку данных"/>
         </StackPanel>
 
-        <Button MinHeight="50" MinWidth="50" FontSize="18" Margin="20" Grid.Row="3" Grid.Column="1">Принять</Button>
-        <Button MinHeight="50" MinWidth="50" FontSize="18" Margin="20" Grid.Row="3" Grid.Column="2">Отмена</Button>
+        <Button Style="{StaticResource buttonDesicion}" MinHeight="50" MinWidth="50" Margin="20" Grid.Row="3" Grid.Column="1">Принять</Button>
+        <Button Style="{StaticResource buttonDesicion}" MinHeight="50" MinWidth="50" Margin="20" Grid.Row="3" Grid.Column="2">Отмена</Button>
 
         <Label Content="Установка" Grid.Row="0" Grid.Column="0" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center"/>
 
