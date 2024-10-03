@@ -14,6 +14,15 @@
             <Setter Property="BorderBrush" Value="Black"/>
             <Setter Property="FontSize" Value="18"/>
         </Style>
+        <Style x:Key="checkboxStyle" TargetType="CheckBox">
+            <Setter Property="FontSize" Value="14"/>
+            <Style.Triggers>
+                <Trigger Property="IsChecked" Value="True">
+                    <Setter Property="Background" Value="Green"/>
+                    <Setter Property="FontWeight" Value="Bold"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
     </Window.Resources>
 
     <Grid ShowGridLines="True">
@@ -31,8 +40,8 @@
         </Grid.ColumnDefinitions>
 
         <StackPanel Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Vertical">
-            <CheckBox FontSize="16" Margin="10" Content=" Я согласен с пользовательским соглашением"/>
-            <CheckBox FontSize="16" Margin="10" Content="Я согласен на обработку данных"/>
+            <CheckBox Style="{StaticResource checkboxStyle}" Margin="10" Content=" Я согласен с пользовательским соглашением"/>
+            <CheckBox Style="{StaticResource checkboxStyle}" Margin="10" Content="Я согласен на обработку данных"/>
         </StackPanel>
 
         <Button Style="{StaticResource buttonDesicion}" MinHeight="50" MinWidth="50" Margin="20" Grid.Row="3" Grid.Column="1">Принять</Button>
