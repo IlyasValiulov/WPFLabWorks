@@ -10,12 +10,23 @@
 
   <ItemGroup>
     <None Remove="images\hgvstrgtavc.png" />
+    <None Remove="sounds\button_cancel.wav" />
+    <None Remove="videos\pixel_loading_bar.mp4" />
   </ItemGroup>
 
   <ItemGroup>
     <Resource Include="images\hgvstrgtavc.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
+    <Content Include="videos\pixel_loading_bar.mp4">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="sounds\button_cancel.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
 </Project>

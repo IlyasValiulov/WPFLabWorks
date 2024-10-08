@@ -15,7 +15,7 @@
             <Setter Property="FontSize" Value="18"/>
             <Setter Property="Margin" Value="20"/>
         </Style>
-        
+
         <Style x:Key="checkboxStyle" TargetType="CheckBox">
             <Setter Property="FontSize" Value="14"/>
             <Style.Triggers>
@@ -46,8 +46,77 @@
             <CheckBox Style="{StaticResource checkboxStyle}" Margin="10" Content="Я согласен на обработку данных"/>
         </StackPanel>
 
-        <Button Style="{StaticResource buttonDesicion}" Background="{StaticResource BrushWheat}" MinHeight="50" MinWidth="50" Grid.Row="3" Grid.Column="1">Принять</Button>
-        <Button Style="{StaticResource buttonDesicion}" Background="{StaticResource BrushWheat}" MinHeight="50" MinWidth="50" Grid.Row="3" Grid.Column="2">Отмена</Button>
+        <Button x:Name="shakingbutton" Style="{StaticResource buttonDesicion}" Background="{StaticResource BrushWheat}" MinHeight="50" MinWidth="50" Grid.Row="3" Grid.Column="1" Content="Установить">
+            <Button.RenderTransform>
+                <TranslateTransform/>
+            </Button.RenderTransform>
+            
+            <Button.Triggers>
+                <EventTrigger RoutedEvent="MouseEnter">
+                    <BeginStoryboard  Name="MouseEnter_BeginStoryboard">
+                        <Storyboard>
+                            <DoubleAnimationUsingKeyFrames RepeatBehavior="Forever" Storyboard.TargetProperty="RenderTransform.(TranslateTransform.Y)">
+                                <SplineDoubleKeyFrame KeyTime="0:0:0" Value="0" />
+                                <SplineDoubleKeyFrame KeyTime="0:0:0.50" Value="-5" />
+                                <SplineDoubleKeyFrame KeyTime="0:0:1" Value="0" />
+                                <SplineDoubleKeyFrame KeyTime="0:0:1.50" Value="5" />
+                                <SplineDoubleKeyFrame KeyTime="0:0:2" Value="0" />
+                            </DoubleAnimationUsingKeyFrames>
+                            <ColorAnimation Storyboard.TargetName="shakingbutton" 
+                                Storyboard.TargetProperty="(Button.Foreground).(SolidColorBrush.Color)" 
+                                To="Green" 
+                                Duration="0:0:0.1"/>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+                <EventTrigger RoutedEvent="MouseLeave">
+                    <StopStoryboard BeginStoryboardName="MouseEnter_BeginStoryboard"/>
+                </EventTrigger>
+            </Button.Triggers>
+            
+        </Button>
+
+        <Button x:Name="cancelbutton" Background="{StaticResource BrushWheat}" MinHeight="50" MinWidth="50" Grid.Row="3" Grid.Column="2" Content="Отмена" FontSize="18" Margin="20">
+            <Button.RenderTransform>
+                <TranslateTransform/>
+            </Button.RenderTransform>
+            
+            <Button.Triggers>
+                <EventTrigger RoutedEvent="MouseEnter">
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimationUsingKeyFrames RepeatBehavior="Forever" Storyboard.TargetProperty="RenderTransform.(TranslateTransform.Y)">
+                                <SplineDoubleKeyFrame KeyTime="0:0:0" Value="0" />
+                                <SplineDoubleKeyFrame KeyTime="0:0:0.50" Value="-5" />
+                                <SplineDoubleKeyFrame KeyTime="0:0:1" Value="0" />
+                                <SplineDoubleKeyFrame KeyTime="0:0:1.50" Value="5" />
+                                <SplineDoubleKeyFrame KeyTime="0:0:2" Value="0" />
+                            </DoubleAnimationUsingKeyFrames>
+                            <ColorAnimation Storyboard.TargetName="shakingbutton" 
+                    Storyboard.TargetProperty="(Button.Foreground).(SolidColorBrush.Color)" 
+                    To="Green" 
+                    Duration="0:0:0.1"/>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+                <EventTrigger RoutedEvent="MouseLeave">
+                    <StopStoryboard BeginStoryboardName="MouseEnter_BeginStoryboard"/>
+                </EventTrigger>
+            </Button.Triggers>
+
+            <Button.Style>
+                <Style>
+                    <Style.Triggers>
+                        <EventTrigger RoutedEvent="Button.Click">
+                            <EventTrigger.Actions>
+                                <SoundPlayerAction Source="sounds/button_cancel.wav"></SoundPlayerAction>
+                            </EventTrigger.Actions>
+                        </EventTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+
+        </Button>
 
         <Label Content="Установка" Grid.Row="0" Grid.Column="0" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center"/>
 
@@ -63,6 +132,8 @@
         </RichTextBox>
 
         <Image Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" Source="images/hgvstrgtavc.png" Stretch="Fill" Margin="0,10"/>
+
+        <MediaElement Source="videos/pixel_loading_bar.mp4" LoadedBehavior="Play" Grid.Row="3" Grid.Column="0"  Margin="14,10,265,10" Grid.ColumnSpan="2"/>
 
     </Grid>
 </Window>
